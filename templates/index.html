@@ -1,0 +1,89 @@
+{%load static%}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> PomoshKG </title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;531;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/reset.css">
+    <link rel="shortcut icon" href="static/images/kyrgyzstan-flag-square-icon-16.png" type="image/png">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="text__title">
+                <div class="text__title__top">Поможем друг другу!</div>
+                <div class="text__title__bootom">Помощь — содействие кому-либо или чему-либо; действия или средства, облегчающие, упрощающие что-либо.<br>
+                    <br>В тяжелое время, только объединившись мы сможем победить болезнь! Эта платформа создана для того, чтобы помочь друг другу в нахождении лекарственных средств или предоставлении любой медицинской помощи. Прошу Вас не употреблять препараты без назначения врача! 
+                    <strong> Самолечение </strong>
+                    лишь усугубит состояние Вашего здоровья!
+                </div>
+            </div>
+        </header>
+            <section class="section">
+                <div class="container">
+            <div class="table__section">
+                <button class="table">
+                    <img src="static/images/6787704541582985692.svg" alt="#" class="icons">
+                    <p class="help">Форма помощи</p>
+                    <p class="table__text">
+                        Нуждаюсь в помощи
+                        Оставьте Ваши контактные данные в анкете, чтобы с Вами могли связаться. Подробно распишите в каких препаратах или лекарствах Вы нуждаетесь, либо какая помощь Вам нужна.
+                        </p>
+                    <a href="{%url 'help_form' %}" class="help__link">Форма помощи</a>
+                </button>
+                <button class="table">
+                    <img src="static/images/2.svg" alt="" class="icons">
+                    <p class="help">Кому нужна помощь </p>
+                    <p class="table__2">
+                       Здесь Вы можете увидеть всю базу людей заполнивших анкеты и связаться с теми, кто нуждаеься в помощи </p>
+                    <a href="{%url 'help_form'%}" class="help__link">Кому нужна помощь</a>
+                </button>
+                <button class="table">
+                    <img src="static/images/3.svg" alt="" class="icons">
+                    <p class="help">Общая база</p>
+                    <p class="table__text3">Здесь Вы можете увидеть всю базу людей заполнивших анкеты и связаться с теми, кто может помочь.</p>
+                    <a href="{% url 'offers_list' %}" class="help__link ">Кто может помочь</a>
+                </button>
+
+                <button class="table">
+                    <img src="static/images/4.svg" alt="" class="icons">
+                    <p class="help">Удалить мои данные</p>
+                    <p class="table__text">Если Вам уже помогли, Вы нашли нужные лекарства и больше не нуждаетесь ни в чем, либо Вы уже помогли всем тем, чем могли, то можете 
+                        заполнить форму и удалить Ваши данные из общей базы.</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScR9j5D-9fuDD-z-Vxxwqh1UeWsAbiidLBdo3zdmntdWumpEg/viewform?usp=sf_link" class="help__link">Удалить мои данные</a>
+                </button>
+            </div>
+            </section>
+        <main class="main">
+            <div class="main__bg">
+        <div class="text__bottom">
+            <div class="text__bottom__top"> <strong>Данный проект не привязан ни к какой коммерции и создан исключительно из социальной потребности общества. В первую очередь - это помощь друг другу в предоставлении лекарств, аппаратов для поддержания жизни, еды, моральной помощи. Прошу Вас помогать только из моральной точки зрения и не просить никаких денежных средств за это!
+            </strong>
+            </div>
+            <div class="text__bottom__bootom">Площадка создана лишь для связи между людьми, поэтому Мы не несём никакую ответственность за любого рода мошенничества или качество медикаментов! Обязательно проверяйте качество препаратов и их срок годности перед употреблением! Берегите себя и своих близких!<br>
+            </div>
+        </div>
+    </div>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__link">
+                <a href="{%url 'help_form'%}" class="footer__item flex">Форма помощи</a>
+                <a href="{% url 'requests_list'%}" class="footer__item">Кому нужна помощь</a>
+                <a href="{% url 'offers_list'%}" class="footer__item">Кто может помочь</a>
+            </div>
+            <a href="#">  <img src="static/images/Ellipse2.svg" alt="" class="back__footer">
+                <img src="static/images/back2.svg" alt="" class="back2__footer">
+            </a>
+    </div>
+    </footer>
+</body>
+
+</html>

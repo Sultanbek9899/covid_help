@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Список запросов о помощи
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="justify-content-center row">
+    <div class="col">
+      <h1 class="text-center md-4 "> Список нуждающихся в помощи </h1>
+            <div class="row">
+            {%for request_data in requests_data.object_list %}
+                 <div class="d-flex align-items-stretch mb-3 col-12 col-md-4 col-lg-3">
+                    <div class="w-100 card">
+                        <div class="d-flex flex-column card-body">
+                            <p class="card-text"  style="flex: 1 1 0%; ">{{request_data.info}} </p>
+                            <button type="button" class="btn btn-link">Открыть полностью</button>
+                            <div class="text-muted card-title">{{ request_data.city }}<br>{{request_data.name}}</small>
+                                   <p class=""> <small>{{request_data.date_pub|date:"d.m.Y H:i"}}</small></p>
+                            <div class="card-subtitle"><a class="btn btn-primary btn-sm"
+                                                          href="tel:{{ request_data.number }}">{{request_data.number}}</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+                </div>
+            </div>
+        </div>
+</div>
+
+    {%if is_paginated %}
+        <nav aria-label="..." >
+            <ul class="pagination justify-content-center">
+                <li class="page-item {%if not prev_url %} disabled {% endif%}">
+                    <a class="page-link" href="{{prev_url}}"> Previous</a>
+                </li>
+                {% for n in requests_data.paginator.page_range %}
+                    {% if requests_data.number == n %}
+                        <li class="page-item active">
+                             <a class="page-link" href="?page={{ n }}">{{n}}
+                             <span class="sr-only">{current}</span>
+                             </a>
+                         </li>
+                    {% elif n > requests_data.number|add:-3 and n < requests_data.number|add:3  %}
+                         <li class="page-item">
+                             <a class="page-link" href="?page={{ n }}">{{n}}</a>
+                         </li>
+                    {% endif %}
+                {% endfor %}
+                <li class="page-item {%if not next_url %} disabled {% endif%}">
+                    <a class="page-link" href="{{next_url}}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    {% endif %}
+{% endblock %}

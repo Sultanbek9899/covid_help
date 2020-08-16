@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Список запросов о помощи
+{% endblock %}
+
+{% block content %}
+ <div class="container">
+  <div class="justify-content-center row">
+    <div class="col">
+      <h1 class="text-center md-4 "> Список готовых помочь </h1>
+            <div class="row">
+            {%for offer_data in offers_data.object_list %}
+                 <div class="d-flex align-items-stretch mb-3 col-12 col-md-4 col-lg-3">
+                    <div class="w-100 card">
+                        <div class="d-flex flex-column card-body">
+                            <p class="card-text" style="flex: 1 1 0%;">{{offer_data.info | truncatechars_html:10}}</p>
+                            <p class="card-text"  style="flex: 1 1 0%; display:none;">{{offer_data.info}} </p>
+                            <span style="display:none" style=&{head};> offer_data.info </span>
+                            <div class="text-muted card-title">{{ offer_data.city }}<br>{{offer_data.name}}</small>
+                                   <p class=""> <small>{{offer_data.date_pub|date:"d.m.Y H:i"}}</small></p>
+                            <div class="card-subtitle"><a class="btn btn-primary btn-sm"
+                                                          href="tel:{{ offer_data.number }}">{{ offer_data.number}}</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+                </div>
+            </div>
+        </div>
+</div>
+    {%if is_paginated %}
+        <nav aria-label="..." >
+            <ul class="pagination justify-content-center">
+                <li class="page-item {%if not prev_url %} disabled {% endif%}">
+                    <a class="page-link" href="{{prev_url}}">Назад</a>
+                </li>
+                {% for n in offers_data.paginator.page_range %}
+                    {% if offers_data.number == n %}
+                        <li class="page-item active">
+                             <a class="page-link" href="?page={{ n }}">{{n}}
+                             <span class="sr-only">{current}</span>
+                             </a>
+                         </li>
+                    {% elif n > offers_data.number|add:-3 and n < offers_data.number|add:3  %}
+                         <li class="page-item">
+                             <a class="page-link" href="?page={{ n }}">{{n}}</a>
+                         </li>
+                    {% endif %}
+                {% endfor %}
+                <li class="page-item {%if not next_url %} disabled {% endif%}">
+                    <a class="page-link" href="{{next_url}}">Вперёд</a>
+                </li>
+            </ul>
+        </nav>
+    {% endif %}
+{% endblock %}
